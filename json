@@ -1,0 +1,9 @@
+// package.json
+{
+  "name": "edex-ui"
+  "version": "2.2.2",
+  "dependencies": {
+    //... other dependencies...
+    "gemma-ai": "^1.0.0"
+  }
+}  
