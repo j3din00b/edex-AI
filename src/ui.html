@@ -1,66 +1,401 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="Content-Security-Policy" content="default-src file: 'unsafe-inline'; img-src file: data:; media-src file:; connect-src ws: file:">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>eDEX-UI</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Platform Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+            background-color: #fff;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        h1, h2, h3 {
+            color: #444;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cybersecurity Platform Documentation</h1>
+        <p>Comprehensive overview of features and enhancements</p>
+    </header>
+    <main>
+        <section id="zero-trust">
+            <h2>1. Zero Trust Security Model</h2>
+            <p>Implementing a basic Zero Trust model by incorporating continuous authentication and microsegmentation.</p>
+            <pre><code>import socket
 
-        <!-- Load dependency css -->
-        <link rel="stylesheet" href="node_modules/augmented-ui/augmented.css" />
-        <!-- Load main css -->
-        <link rel="stylesheet" href="assets/css/main.css" />
-        <link rel="stylesheet" href="assets/css/modal.css" />
-        <link rel="stylesheet" href="assets/css/boot_screen.css" />
-        <link rel="stylesheet" href="assets/css/media_player.css" />
-        <!-- Load main modules css -->
-        <link rel="stylesheet" href="assets/css/main_shell.css" />
-        <link rel="stylesheet" href="assets/css/filesystem.css" />
-        <link rel="stylesheet" href="assets/css/keyboard.css" />
-        <!-- Load secondary modules css -->
-        <link rel="stylesheet" href="assets/css/mod_column.css" />
-        <link rel="stylesheet" href="assets/css/mod_clock.css" />
-        <link rel="stylesheet" href="assets/css/mod_sysinfo.css" />
-        <link rel="stylesheet" href="assets/css/mod_hardwareInspector.css" />
-        <link rel="stylesheet" href="assets/css/mod_cpuinfo.css" />
-        <link rel="stylesheet" href="assets/css/mod_netstat.css" />
-        <link rel="stylesheet" href="assets/css/mod_conninfo.css" />
-        <link rel="stylesheet" href="assets/css/mod_globe.css" />
-        <link rel="stylesheet" href="assets/css/mod_ramwatcher.css" />
-        <link rel="stylesheet" href="assets/css/mod_toplist.css" />
-        <link rel="stylesheet" href="assets/css/mod_fuzzyFinder.css" />
-        <link rel="stylesheet" href="assets/css/mod_processlist.css" />
-        <!-- Load extra CSS -->
-        <link rel="stylesheet" href="assets/css/extra_ratios.css" />
+def microsegmentation_check(user_ip):
+    allowed_segments = {
+        "192.168.1.0/24": ["admin", "user"],
+        "10.0.0.0/24": ["guest"]
+    }
+    for segment, roles in allowed_segments.items():
+        if ip_in_subnet(user_ip, segment) and user_roles[user_ip] in roles:
+            return True
+    return False
 
-        <!-- Load dependency js -->
-        <script src="node_modules/pdfjs-dist/build/pdf.js"></script>
-        <!-- Load main modules classes -->
-        <script src="classes/modal.class.js"></script>
-        <script src="classes/terminal.class.js"></script>
-        <script src="classes/docReader.class.js"></script>
-        <script src="classes/mediaPlayer.class.js"></script>
-        <script src="classes/filesystem.class.js"></script>
-        <script src="classes/keyboard.class.js"></script>
-        <script src="classes/updateChecker.class.js"></script>
-        <!-- Load secondary modules classes -->
-        <script src="classes/clock.class.js"></script>
-        <script src="classes/sysinfo.class.js"></script>
-        <script src="classes/hardwareInspector.class.js"></script>
-        <script src="classes/cpuinfo.class.js"></script>
-        <script src="classes/netstat.class.js"></script>
-        <script src="classes/conninfo.class.js"></script>
-        <script src="classes/locationGlobe.class.js"></script>
-        <script src="classes/ramwatcher.class.js"></script>
-        <script src="classes/toplist.class.js"></script>
-        <script src="classes/fuzzyFinder.class.js"></script>
-        <!-- Load extra classes -->
-        <script src="classes/audiofx.class.js"></script>
-    </head>
-    <body class="solidBackground">
-        <section id="boot_screen">
+def ip_in_subnet(ip, subnet):
+    import ipaddress
+    return ipaddress.ip_address(ip) in ipaddress.ip_network(subnet)
+
+def authenticate_and_authorize(username, password, user_ip):
+    if authenticate_with_mfa(username, password):
+        if microsegmentation_check(user_ip):
+            return True
+        else:
+            print("Access Denied: Your role does not have access to this network segment.")
+    return False
+
+def ed3x_ui_shell():
+    username = input("Username: ")
+    password = input("Password: ")
+    user_ip = socket.gethostbyname(socket.gethostname())
+
+    if not authenticate_and_authorize(username, password, user_ip):
+        print("Authentication Failed")
+        return
+
+    # The rest of the function continues as before...
+</code></pre>
         </section>
 
-        <script src="_renderer.js"></script>
-    </body>
+        <section id="threat-hunting">
+            <h2>2. Threat Hunting and Automated Playbooks</h2>
+            <p>Enhancing incident response with proactive threat hunting and automated response playbooks.</p>
+            <pre><code>def threat_hunting():
+    cursor.execute("SELECT * FROM logs WHERE log_message LIKE '%unauthorized%' OR log_message LIKE '%failed%'")
+    suspicious_logs = cursor.fetchall()
+    for log in suspicious_logs:
+        print(f"Suspicious Log: {log}")
+        execute_playbook("unauthorized_access", {"ip": log[2]})
+
+def execute_playbook(playbook_name, context):
+    playbooks = {
+        "unauthorized_access": [
+            {"step": "Block IP", "command": f"iptables -A INPUT -s {context['ip']} -j DROP"},
+            {"step": "Log Incident", "command": f"log_event('Incident Response', 'Blocked IP: {context['ip']}')"}
+        ]
+    }
+    steps = playbooks.get(playbook_name, [])
+    for step in steps:
+        command = step["command"]
+        print(f"Executing: {step['step']}")
+        result = subprocess.run(command, shell=True, capture_output=True, text=True)
+        print(result.stdout)
+</code></pre>
+        </section>
+
+        <section id="dark-web-monitoring">
+            <h2>3. Dark Web Monitoring</h2>
+            <p>Monitoring the dark web for mentions of your organization or data breaches using web scraping or an API.</p>
+            <pre><code>def dark_web_monitoring():
+    response = requests.get("https://darkweb-monitoring-api.example.com/search?query=your_company")
+    results = response.json()
+    for result in results:
+        if "sensitive_data" in result:
+            log_event("Dark Web Alert", f"Sensitive data found on the dark web: {result}")
+            print(f"Alert: Sensitive data found on the dark web - {result}")
+</code></pre>
+        </section>
+
+        <section id="uba">
+            <h2>4. User Behavior Analytics (UBA) with Advanced Machine Learning</h2>
+            <p>Leveraging deep learning models to enhance UBA and detect anomalies in user behavior.</p>
+            <pre><code>from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM, Dense, Dropout
+
+def train_deep_learning_uba_model():
+    cursor.execute("SELECT action FROM user_behavior")
+    actions = cursor.fetchall()
+    actions_series = pd.Series([a[0] for a in actions])
+    actions_encoded = pd.get_dummies(actions_series)
+
+    X = []
+    y = []
+    for i in range(60, len(actions_encoded)):
+        X.append(actions_encoded[i-60:i].values)
+        y.append(actions_encoded.iloc[i].values)
+    X, y = np.array(X), np.array(y)
+
+    model = Sequential()
+    model.add(LSTM(units=50, return_sequences=True, input_shape=(X.shape[1], X.shape[2])))
+    model.add(Dropout(0.2))
+    model.add(LSTM(units=50, return_sequences=False))
+    model.add(Dropout(0.2))
+    model.add(Dense(units=y.shape[1]))
+    model.compile(optimizer='adam', loss='mean_squared_error')
+    model.fit(X, y, epochs=10, batch_size=64)
+    model.save("uba_model.h5")
+
+def predict_user_behavior(action_sequence):
+    model = keras.models.load_model("uba_model.h5")
+    prediction = model.predict(action_sequence)
+    return prediction
+</code></pre>
+        </section>
+
+        <section id="dlp">
+            <h2>5. Enhanced Data Loss Prevention (DLP)</h2>
+            <p>Monitoring and controlling data transfers to prevent unauthorized access and data exfiltration.</p>
+            <pre><code>def data_loss_prevention_check(file_path):
+    sensitive_keywords = ["confidential", "ssn", "credit card"]
+    with open(file_path, "r") as file:
+        content = file.read()
+        for keyword in sensitive_keywords:
+            if keyword in content.lower():
+                log_event("DLP Alert", f"Sensitive data detected in {file_path}")
+                print(f"DLP Alert: Sensitive data detected in {file_path}")
+                return False
+    return True
+</code></pre>
+        </section>
+
+        <section id="honeypots">
+            <h2>6. Honeypots and Deception Technologies</h2>
+            <p>Deploying honeypots and deception tokens to detect and analyze malicious activities.</p>
+            <pre><code>def deploy_honeypot(port=8080):
+    honeypot_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    honeypot_socket.bind(("0.0.0.0", port))
+    honeypot_socket.listen(5)
+    print(f"Honeypot deployed on port {port}")
+
+    while True:
+        client_socket, address = honeypot_socket.accept()
+        print(f"Connection from {address}")
+        log_event("Honeypot Alert", f"Connection from {address} to port {port}")
+        client_socket.close()
+</code></pre>
+        </section>
+
+        <section id="biometrics">
+            <h2>7. Behavioral Biometrics for Authentication</h2>
+            <p>Using behavioral biometrics, such as typing patterns, for additional authentication security.</p>
+            <pre><code>from pynput import keyboard, mouse
+import time
+
+def collect_typing_pattern():
+    timing = []
+
+    def on_press(key):
+        timing.append(time.time())
+
+    with keyboard.Listener(on_press=on_press) as listener:
+        listener.join()
+
+    intervals = [timing[i+1] - timing[i] for i in range(len(timing)-1)]
+    return intervals
+
+def authenticate_with_biometrics(username, password):
+    if authenticate_with_mfa(username, password):
+        print("Please type the following sentence for behavioral verification: 'The quick brown fox jumps over the lazy dog.'")
+        pattern = collect_typing_pattern()
+        stored_pattern = [0.12, 0.10, 0.15, ...]
+        if compare_patterns(pattern, stored_pattern):
+            return True
+    return False
+
+def compare_patterns(input_pattern, stored_pattern):
+    return sum([abs(a - b) for a, b in zip(input_pattern, stored_pattern)]) < 0.05
+</code></pre>
+        </section>
+
+        <section id="api-security">
+            <h2>8. Enhanced API Security</h2>
+            <p>Improving API security with rate limiting, JWT, and an API gateway.</p>
+            <pre><code>from flask_limiter import Limiter
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required
+
+app.config['JWT_SECRET_KEY'] = 'super-secret-key'
+jwt = JWTManager(app)
+limiter = Limiter(app, key_func=lambda: request.remote_addr)
+
+@app.route('/api/protected', methods=['GET'])
+@jwt_required()
+@limiter.limit("5 per minute")
+def protected_route():
+    return jsonify({"message": "You have accessed a protected API route"})
+
+@app.route('/api/login', methods=['POST'])
+def login():
+    username = request.json.get("username", None)
+    password = request.json.get("password", None)
+    if authenticate(username, password):
+        access_token = create_access_token(identity=username)
+        return jsonify(access_token=access_token)
+    return jsonify({"msg": "Bad credentials"}), 401
+</code></pre>
+        </section>
+
+        <section id="blockchain">
+            <h2>9. Blockchain-Based Identity Management</h2>
+            <p>Implementing blockchain for decentralized identity management and smart contract-based access control.</p>
+            <pre><code>from blockchain import Blockchain
+
+class BlockchainIdentity:
+    def __init__(self):
+        self.blockchain = Blockchain()
+
+    def register_identity(self, user_id):
+        did = f"did:example:{user_id}"
+        self.blockchain.add_block({"user_id": user_id, "did": did})
+        return did
+
+    def verify_identity(self, did):
+        for block in self.blockchain.chain:
+            if block['data']['did'] == did:
+                return True
+        return False
+
+identity_manager = BlockchainIdentity()
+
+new_did = identity_manager.register_identity("user123")
+print(f"New DID: {new_did}")
+
+if identity_manager.verify_identity(new_did):
+    print("Identity verified")
+</code></pre>
+        </section>
+
+        <section id="gdpr">
+            <h2>10. GDPR and Compliance Automation</h2>
+            <p>Automating GDPR compliance, including data subject requests like the right to erasure.</p>
+            <pre><code>def gdpr_right_to_erasure(user_id):
+    cursor.execute("DELETE FROM user_behavior WHERE user_id = ?", (user_id,))
+    cursor.execute("DELETE FROM logs WHERE log_message LIKE ?", (f"%{user_id}%",))
+    conn.commit()
+    log_event("GDPR Compliance", f"Erasure request completed for user {user_id}")
+</code></pre>
+        </section>
+
+        <section id="dashboards">
+            <h2>11. Advanced Visualization and Dashboards</h2>
+            <p>Adding more advanced visualizations using real-time data and customizable dashboards.</p>
+            <pre><code>import dash
+from dash import dcc, html
+import plotly.express as px
+from flask import Flask
+
+dash_app = dash.Dash(__name__, server=app, routes_pathname_prefix='/dash/')
+
+def create_dashboard():
+    cursor.execute("SELECT date, COUNT(*) FROM logs GROUP BY date")
+    data = cursor.fetchall()
+    df = pd.DataFrame(data, columns=['Date', 'Log Count'])
+
+    fig = px.line(df, x='Date', y='Log Count', title='Daily Log Entries')
+    dash_app.layout = html.Div([
+        dcc.Graph(figure=fig)
+    ])
+
+create_dashboard()
+dash_app.run_server(debug=True)
+</code></pre>
+        </section>
+
+        <section id="ip-reputation">
+            <h2>12. IP Reputation and Geolocation Analysis</h2>
+            <p>Implementing IP reputation checks and geolocation-based access controls.</p>
+            <pre><code>import geoip2.database
+
+def ip_reputation_check(ip):
+    response = requests.get(f"https://ip-reputation-service.com/{ip}")
+    reputation = response.json()
+    return reputation['score']
+
+def geolocation_check(ip):
+    reader = geoip2.database.Reader('/path/to/GeoLite2-City.mmdb')
+    response = reader.city(ip)
+    return response.country.iso_code
+</code></pre>
+        </section>
+
+        <section id="threat-correlation">
+            <h2>13. Advanced Threat Correlation and Analysis</h2>
+            <p>Combining logs, network traffic, and user behavior for advanced threat detection.</p>
+            <pre><code>def threat_correlation_engine():
+    cursor.execute("SELECT * FROM logs")
+    logs = cursor.fetchall()
+    cursor.execute("SELECT * FROM user_behavior")
+    behaviors = cursor.fetchall()
+
+    for log in logs:
+        for behavior in behaviors:
+            if log['user_id'] == behavior['user_id'] and log['timestamp'] == behavior['timestamp']:
+                print(f"Correlation found: {log} <-> {behavior}")
+                log_event("Threat Correlation", f"Correlation found between log and user behavior for user {log['user_id']}")
+</code></pre>
+        </section>
+
+        <section id="security-testing">
+            <h2>14. Custom Security Testing Framework</h2>
+            <p>Building a modular security testing framework combining multiple tools.</p>
+            <pre><code>def run_security_test(tool, target):
+    tools = {
+        "nmap": f"nmap -sV {target}",
+        "metasploit": f"msfconsole -x 'use exploit/windows/smb/ms17_010_eternalblue; set RHOST {target}; exploit'",
+        "nessus": f"nessus -q -p 8834 -T xml --scan-target={target}"
+    }
+    command = tools.get(tool)
+    if command:
+        result = subprocess.run(command, shell=True, capture_output=True, text=True)
+        log_event("Security Test", f"Ran {tool} on {target}: {result.stdout}")
+        print(result.stdout)
+    else:
+        print(f"Tool {tool} is not supported.")
+</code></pre>
+        </section>
+
+        <section id="phishing">
+            <h2>15. Phishing Simulations</h2>
+            <p>Developing phishing simulations to train users on recognizing phishing attempts.</p>
+            <pre><code>def run_phishing_simulation(user_email):
+    phishing_email = {
+        "subject": "Urgent: Your account has been compromised",
+        "body": "Click the link below to reset your password immediately.",
+        "link": "http://fake-phishing-site.com"
+    }
+    send_email(user_email, phishing_email['subject'], phishing_email['body'])
+    log_event("Phishing Simulation", f"Sent phishing email to {user_email}")
+
+def send_email(recipient, subject, body):
+    with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+        smtp.starttls()
+        smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+        msg = f'Subject: {subject}\n\n{body}'
+        smtp.sendmail(EMAIL_ADDRESS, recipient, msg)
+</code></pre>
+        </section>
+    </main>
+</body>
 </html>
