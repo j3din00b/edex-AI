@@ -7,3 +7,19 @@ RUN apt-get update && apt-get install -y \
     build-essential ca-certificates gnupg lsb-release
 
 # Install additional dependencies as required
+# Clone and install Edex-UI
+RUN git clone https://github.com/GitSquared/edex-ui.git /opt/edex-ui \
+    && cd /opt/edex-ui \
+    && npm install
+
+# Install cybersecurity tools
+RUN git clone https://github.com/projectdiscovery/naabu.git /opt/naabu \
+    && cd /opt/naabu \
+    && go build
+
+# Install AI tools
+RUN git clone https://github.com/facebookresearch/llama.git /opt/llama-gpt \
+    && pip install -r /opt/llama-gpt/requirements.txt
+
+# ... continue installing the remaining tools
+mkdir
