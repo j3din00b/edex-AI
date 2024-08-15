@@ -22,4 +22,3 @@ RUN git clone https://github.com/facebookresearch/llama.git /opt/llama-gpt \
     && pip install -r /opt/llama-gpt/requirements.txt
 
 # ... continue installing the remaining tools
-mkdir
