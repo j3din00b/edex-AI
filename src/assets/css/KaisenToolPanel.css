@@ -1,0 +1,64 @@
+.kaisen-panel {
+    padding: 20px;
+    color: #00ff00; /* Green text */
+    background-color: #1a1a1a; /* Dark background */
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.kaisen-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #333;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    font-size: 14px;
+}
+
+.kaisen-button {
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background-color: #333;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.kaisen-dropdown {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #333;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    font-size: 14px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

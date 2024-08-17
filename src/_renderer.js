@@ -415,6 +415,51 @@ async function initUI() {
 
     greeter.remove();
 
+  // Inside src/renderer.js
+
+// Find the `root.innerHTML` assignment and add your custom panel
+root.innerHTML = `
+${root.innerHTML} <!-- Keep the existing layout -->
+
+<!-- Custom Kaisen Tools Panel -->
+<div id="kaisen-tools-panel" class="kaisen-panel">
+    <h2>Kaisen Linux Tools</h2>
+    <div class="tooltip">
+        <select id="kaisen-task-select" class="kaisen-dropdown">
+            <option value="">Select a Task</option>
+            <option value="apt-get update">Update System</option>
+            <option value="apt-get upgrade">Upgrade System</option>
+            <option value="katoolin3 install tools">Install Katoolin Tools</option>
+        </select>
+        <span class="tooltiptext">Select a common task to execute.</span>
+    </div>
+    <input
+        type="text"
+        id="kaisen-command-input"
+        class="kaisen-input"
+        placeholder="Or Enter Katoolin command"
+    />
+    <button id="kaisen-execute-button" class="kaisen-button">Execute</button>
+    <div id="kaisen-terminal-output" style="height: 200px; width: 100%; background-color: #000;"></div>
+</div>
+`;
+
+// Add JavaScript functionality for your panel below the root.innerHTML assignment
+
+// Adding event listener for the execute button
+const terminalOutput = document.getElementById('kaisen-terminal-output');
+const commandInput = document.getElementById('kaisen-command-input');
+const executeButton = document.getElementById('kaisen-execute-button');
+const taskSelect = document.getElementById('kaisen-task-select');
+
+executeButton.addEventListener('click', () => {
+const selectedTask = taskSelect.value;
+const command = selectedTask || commandInput.value;
+
+// Example output (You need to implement command execution and display result)
+terminalOutput.innerHTML += `<p>Executing: ${command}</p>`;
+});
+    
     // Initialize modules
     window.mods = {};
 
@@ -1150,3 +1195,55 @@ electronWin.on("resize", () => {
 electronWin.on("leave-full-screen", () => {
     electron.remote.getCurrentWindow().setSize(960, 540);
 });
+
+// Inline styles in renderer.js
+
+const styles = `
+    .kaisen-panel {
+        padding: 20px;
+        color: #00ff00;
+        background-color: #1a1a1a;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    .kaisen-input, .kaisen-dropdown, .kaisen-button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: #333;
+        color: #00ff00;
+        border: 1px solid #00ff00;
+        font-size: 14px;
+    }
+    .kaisen-button {
+        cursor: pointer;
+    }
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        cursor: help;
+    }
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 200px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 5px;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -100px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+`;
+const styleSheet = document.createElement("style");
+styleSheet.type = "text/css";
+styleSheet.innerText = styles;
+document.head.appendChild(styleSheet);
