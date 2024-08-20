@@ -1,0 +1,21 @@
+<!-- src/plugins/kali-tools/index.html -->
+
+<div class="kali-tools-menu">
+  <h1>Kali Linux Tools Interface</h1>
+  <ul id="tools-list">
+    <!-- Tool list will be dynamically generated -->
+  </ul>
+  <button onclick="selectTool()">Run Selected Tool</button>
+</div>
+
+<script>
+  const { KaliToolsPlugin } = require("./index");
+
+  const kaliTools = new KaliToolsPlugin();
+  kaliTools.displayMenu();
+
+  function selectTool() {
+    const toolIndex = prompt("Enter the number of the tool you want to run:");
+    kaliTools.executeTool(parseInt(toolIndex, 10));
+  }
+</script>
